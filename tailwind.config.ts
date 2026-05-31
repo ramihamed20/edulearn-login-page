@@ -12,11 +12,19 @@ const config: Config = {
         }
       },
       boxShadow: {
-        glass: "0 24px 80px rgba(124, 45, 18, 0.16)"
+        glass:
+          "0 24px 80px rgba(124, 45, 18, 0.18), 0 1px 0 rgba(255, 255, 255, 0.72) inset"
       },
       fontFamily: {
+        serif: [
+          "Crimson Pro",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "serif"
+        ],
         sans: [
-          "Inter",
+          "Atkinson Hyperlegible",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",

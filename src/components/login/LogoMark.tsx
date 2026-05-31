@@ -1,14 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
 
 export function LogoMark() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      animate={{ y: [0, -7, 0], rotate: [0, 2, 0] }}
-      transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-      className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 shadow-xl shadow-orange-400/35"
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 8, scale: 0.96 }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 via-orange-500 to-orange-700 shadow-xl shadow-orange-500/35 ring-1 ring-white/80"
       aria-hidden="true"
     >
       <GraduationCap className="h-7 w-7 text-white" strokeWidth={2.25} />
