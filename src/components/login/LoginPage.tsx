@@ -221,9 +221,9 @@ export function LoginPage() {
               Secure academic access
             </div>
 
-            <h2 className="mt-7 max-w-lg font-serif text-5xl font-semibold leading-tight text-slate-950">
+            <h1 className="mt-7 max-w-lg font-serif text-5xl font-semibold leading-tight text-slate-950">
               Learn with clarity, momentum, and confidence.
-            </h2>
+            </h1>
 
             <p className="mt-5 max-w-lg text-lg leading-8 text-slate-700">
               EduLearn keeps lessons, assignments, progress, and classroom tools
@@ -274,10 +274,10 @@ export function LoginPage() {
             <header className="text-center">
               <LogoMark />
               <div className="mt-4">
-                <p className="text-2xl font-bold tracking-normal text-slate-950">
+                <p className="text-lg font-bold tracking-wide uppercase text-orange-700">
                   EduLearn
                 </p>
-                <p className="mt-1 text-sm font-semibold text-slate-500">
+                <p className="mt-0.5 text-xs font-semibold tracking-wide text-slate-400">
                   Smart Learning Platform
                 </p>
               </div>
@@ -290,9 +290,9 @@ export function LoginPage() {
               onSubmit={handleSubmit}
             >
               <div>
-                <h1 className="text-2xl font-bold tracking-normal text-slate-950">
+                <h2 className="text-2xl font-bold tracking-normal text-slate-950">
                   Welcome back
-                </h1>
+                </h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
                   Sign in to continue your courses, assignments, and progress.
                 </p>
@@ -305,15 +305,19 @@ export function LoginPage() {
                 >
                   <p className="font-bold">Review these fields:</p>
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {visibleErrors.map(([field]) => (
-                      <a
-                        key={field}
-                        href={`#${field === "identifier" ? "student-id" : "password"}`}
-                        className="rounded-full bg-white px-3 py-1 text-xs font-bold text-red-700 ring-1 ring-red-200 transition hover:bg-red-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200"
-                      >
-                        {field === "identifier" ? "Student ID" : "Password"}
-                      </a>
-                    ))}
+                    {visibleErrors.map(([field]) => {
+                      const fieldLabel = field === "identifier" ? "Student ID" : "Password";
+                      return (
+                        <a
+                          key={field}
+                          href={`#${field === "identifier" ? "student-id" : "password"}`}
+                          aria-label={`Go to ${fieldLabel} field`}
+                          className="rounded-full bg-white px-3 py-1 text-xs font-bold text-red-700 ring-1 ring-red-200 transition hover:bg-red-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200"
+                        >
+                          {fieldLabel}
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               ) : null}
@@ -376,6 +380,7 @@ export function LoginPage() {
                     checked={values.remember}
                     className="h-5 w-5 rounded border-orange-200 text-orange-600 accent-orange-600 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-300/35"
                     disabled={isBusy}
+                    name="remember"
                     onChange={(event) =>
                       setValues((current) => ({
                         ...current,
@@ -431,15 +436,16 @@ export function LoginPage() {
                 Sign In
               </ActionButton>
 
-              <div className="flex items-center gap-4">
-                <span className="h-px flex-1 bg-orange-100" />
-                <span className="text-xs font-bold uppercase text-slate-400">
+              <div className="flex items-center gap-4 py-1">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-200 to-transparent" />
+                <span className="select-none text-xs font-bold uppercase tracking-widest text-slate-400">
                   Or
                 </span>
-                <span className="h-px flex-1 bg-orange-100" />
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-200 to-transparent" />
               </div>
 
               <ActionButton
+                aria-label="Continue browsing courses as a guest without signing in"
                 disabled={isSubmitting}
                 icon={<UserRound className="h-5 w-5" strokeWidth={2.1} />}
                 loading={guestLoading}

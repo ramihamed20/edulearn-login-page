@@ -26,6 +26,7 @@ export function WaveLayer({ position }: WaveLayerProps) {
         viewBox="0 0 1440 320"
         preserveAspectRatio="none"
         focusable="false"
+        style={{ willChange: "transform" }}
         animate={shouldReduceMotion ? undefined : { x: ["-3%", "3%", "-3%"] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -55,6 +56,7 @@ export function WaveLayer({ position }: WaveLayerProps) {
         viewBox="0 0 1440 320"
         preserveAspectRatio="none"
         focusable="false"
+        style={{ willChange: "transform" }}
         animate={shouldReduceMotion ? undefined : { x: ["3%", "-2%", "3%"] }}
         transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
       >
